@@ -26,25 +26,25 @@ const features = [
 const WhyChooseUs = () => {
   return (
     <section id="why-us" className="section-padding bg-secondary">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="text-accent text-sm font-medium tracking-wider uppercase">Our Promise</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-2 text-foreground">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <span className="text-accent text-xs font-medium tracking-wider uppercase">Our Promise</span>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground">
             Why Choose <span className="text-gold-gradient">Us</span>
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, i) => (
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+          {features.map((feature) => (
             <div
               key={feature.title}
-              className="card-luxury p-8 text-center group"
+              className="card-luxury p-5 md:p-7 text-center group"
             >
-              <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
-                <feature.icon className="w-7 h-7 text-accent" />
+              <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors duration-300">
+                <feature.icon className="w-5 h-5 text-accent" />
               </div>
-              <h3 className="font-heading text-lg font-semibold text-foreground mb-3">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
+              <h3 className="font-heading text-sm md:text-base font-semibold text-foreground mb-2">{feature.title}</h3>
+              <p className="text-muted-foreground text-xs leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>

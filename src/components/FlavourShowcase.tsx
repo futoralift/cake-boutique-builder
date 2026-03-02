@@ -17,7 +17,7 @@ const fruitFlavours = [
 ];
 
 const tabs = [
-  { id: "chocolate", label: "🍫 Chocolate Flavours", flavours: chocolateFlavours },
+  { id: "chocolate", label: "🍫 Chocolate", flavours: chocolateFlavours },
   { id: "fruit", label: "🍍 Fruit & Special", flavours: fruitFlavours },
 ];
 
@@ -29,25 +29,25 @@ const FlavourShowcase = () => {
 
   return (
     <section id="flavours" className="section-padding bg-secondary">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-accent text-sm font-medium tracking-wider uppercase">Our Menu</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-2 text-foreground">
+        <div className="text-center mb-8 md:mb-12">
+          <span className="text-accent text-xs font-medium tracking-wider uppercase">Our Menu</span>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground">
             Explore Our <span className="text-gold-gradient">Flavours</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-lg mx-auto">
+          <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm">
             From rich chocolate indulgence to fresh fruit delights — find your perfect cake.
           </p>
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center gap-4 mb-10">
+        <div className="flex justify-center gap-3 mb-8">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-6 py-3 rounded-xl font-medium text-sm transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 ${
                 activeTab === tab.id
                   ? "bg-accent text-accent-foreground gold-glow"
                   : "bg-card border border-border text-muted-foreground hover:border-accent/30"
@@ -59,27 +59,25 @@ const FlavourShowcase = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
           {activeFlavours.map((flavour, i) => (
-            <div
+            <a
               key={flavour}
-              className="card-luxury p-5 text-center group cursor-pointer"
+              href={`${WHATSAPP_BASE}Hi, I want to order ${encodeURIComponent(flavour)} cake.`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-luxury p-4 text-center group cursor-pointer"
               style={{ animationDelay: `${i * 0.03}s` }}
             >
-              <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                <Cake className="w-5 h-5 text-accent" />
+              <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
+                <Cake className="w-4 h-4 text-accent" />
               </div>
-              <h3 className="text-sm font-medium text-foreground mb-3 leading-tight">{flavour}</h3>
-              <a
-                href={`${WHATSAPP_BASE}Hi, I want to order ${encodeURIComponent(flavour)} cake.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-xs text-accent font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              >
+              <h3 className="text-xs sm:text-sm font-medium text-foreground mb-2 leading-tight">{flavour}</h3>
+              <span className="inline-flex items-center gap-1 text-[10px] text-accent font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <ShoppingBag className="w-3 h-3" />
-                Order Now
-              </a>
-            </div>
+                Order
+              </span>
+            </a>
           ))}
         </div>
       </div>

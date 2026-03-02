@@ -15,22 +15,22 @@ const WHATSAPP_BASE = "https://wa.me/919762632539?text=";
 const FeaturedCakes = () => {
   return (
     <section id="featured" className="section-padding">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="text-accent text-sm font-medium tracking-wider uppercase">Speciality</span>
-          <h2 className="font-heading text-4xl md:text-5xl font-bold mt-2 text-foreground">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-8 md:mb-12">
+          <span className="text-accent text-xs font-medium tracking-wider uppercase">Speciality</span>
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground">
             Featured <span className="text-gold-gradient">Cakes</span>
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {categories.map((cat, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-5">
+          {categories.map((cat) => (
             <a
               key={cat.title}
               href={`${WHATSAPP_BASE}Hi, I'm interested in ${encodeURIComponent(cat.title)}.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] card-luxury"
+              className="group relative rounded-xl overflow-hidden aspect-[4/3] card-luxury"
             >
               <img
                 src={cat.image}
@@ -39,9 +39,9 @@ const FeaturedCakes = () => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <p className="text-accent text-sm font-medium mb-1">{cat.subtitle}</p>
-                <h3 className="font-heading text-2xl md:text-3xl font-bold text-foreground">{cat.title}</h3>
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                <p className="text-accent text-[10px] sm:text-xs font-medium mb-0.5">{cat.subtitle}</p>
+                <h3 className="font-heading text-base sm:text-xl md:text-2xl font-bold text-foreground">{cat.title}</h3>
               </div>
             </a>
           ))}
