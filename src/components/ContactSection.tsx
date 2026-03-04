@@ -21,7 +21,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-heading font-semibold text-foreground text-sm mb-0.5">Address</h3>
-                  <p className="text-muted-foreground text-xs">The Creamy Walnut, Pune, Maharashtra</p>
+                  <p className="text-muted-foreground text-xs">CRXH+4M3, Vetal Baba Chowk, Narhe, Pune, Maharashtra 411041</p>
                 </div>
               </div>
 
@@ -52,7 +52,7 @@ const ContactSection = () => {
           {/* Map */}
           <div className="h-64 md:h-auto min-h-[280px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d242117.68077767!2d73.72288390258!3d18.524598558498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x828d43bf9d9ee343!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.5!2d73.8!3d18.45!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2956000000001%3A0x1!2sVetal%20Baba%20Chowk%2C%20Narhe%2C%20Pune%2C%20Maharashtra%20411041!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
