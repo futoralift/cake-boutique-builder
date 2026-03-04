@@ -52,7 +52,7 @@ const ContactSection = () => {
           {/* Map */}
           <div className="h-64 md:h-auto min-h-[280px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3784.576!2d73.8167!3d18.4498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2956c38edffc1%3A0x7fdcb6b6e3e5b3a!2sVetal%20Baba%20Chowk%2C%20Narhe%2C%20Pune%2C%20Maharashtra%20411041!5e0!3m2!1sen!2sin!4v1709500000000!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1892.3!2d73.81355!3d18.44875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc295eb8bfbbb8b%3A0x218b05498a862f24!2sThe%20Creamy%20Walnut!5e0!3m2!1sen!2sin!4v1709500000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
               style={{ border: 0 }}
