@@ -1,4 +1,5 @@
 import { Cake, MessageCircle } from "lucide-react";
+import { motion } from "framer-motion";
 import heroCake from "@/assets/hero-cake.png";
 
 const HeroSection = () => {
@@ -8,64 +9,78 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background image */}
-      <div className="absolute inset-0">
+      <motion.div
+        className="absolute inset-0"
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+      >
         <img
           src={heroCake}
           alt="Premium bakery interior with golden lighting"
           className="w-full h-full object-cover"
         />
-        {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent" />
-      </div>
+      </motion.div>
 
       {/* Center Content */}
       <div className="relative z-10 text-center max-w-3xl mx-auto px-6 py-24">
-        {/* Small tagline */}
-        <p
-          className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-accent font-medium mb-6 animate-fade-up"
+        <motion.p
+          className="text-[11px] sm:text-xs uppercase tracking-[0.35em] text-accent font-medium mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
           Different Style Cake
-        </p>
+        </motion.p>
 
-        {/* Decorative line */}
-        <div className="flex items-center justify-center gap-3 mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+        <motion.div
+          className="flex items-center justify-center gap-3 mb-6"
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
           <span className="w-8 sm:w-12 h-px bg-accent/40" />
           <Cake className="w-4 h-4 text-accent/60" />
           <span className="w-8 sm:w-12 h-px bg-accent/40" />
-        </div>
+        </motion.div>
 
-        {/* Main heading */}
-        <h1
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-foreground mb-4 animate-fade-up"
-          style={{ animationDelay: "0.15s" }}
+        <motion.h1
+          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] text-foreground mb-4"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
         >
           The Creamy
           <br />
           <span className="text-gold-gradient">Walnut</span>
-        </h1>
+        </motion.h1>
 
-        {/* Subheading */}
-        <p
-          className="font-heading text-lg sm:text-xl md:text-2xl italic text-accent/80 mb-5 animate-fade-up"
-          style={{ animationDelay: "0.25s" }}
+        <motion.p
+          className="font-heading text-lg sm:text-xl md:text-2xl italic text-accent/80 mb-5"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
         >
           Love At First Bite
-        </p>
+        </motion.p>
 
-        {/* Description */}
-        <p
-          className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-10 leading-relaxed animate-fade-up"
-          style={{ animationDelay: "0.35s" }}
+        <motion.p
+          className="text-muted-foreground text-sm sm:text-base max-w-lg mx-auto mb-10 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
         >
           Freshly baked happiness for every celebration. Premium cakes crafted
           with love and the finest ingredients.
-        </p>
+        </motion.p>
 
-        {/* CTA Buttons */}
-        <div
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-fade-up"
-          style={{ animationDelay: "0.45s" }}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2 }}
         >
           <a
             href="#flavours"
@@ -83,10 +98,9 @@ const HeroSection = () => {
             <MessageCircle className="w-4 h-4" />
             Order on WhatsApp
           </a>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Bottom gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );

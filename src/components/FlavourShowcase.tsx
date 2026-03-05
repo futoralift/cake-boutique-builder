@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Cake, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 
 const chocolateFlavours = [
   "Kivan Crunchy", "Truffle Chocolate", "Belgium Chocolate", "Oreo Chocolate",
@@ -31,7 +32,13 @@ const FlavourShowcase = () => {
     <section id="flavours" className="section-padding bg-secondary">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8 md:mb-12">
+        <motion.div
+          className="text-center mb-8 md:mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+        >
           <span className="text-accent text-xs font-medium tracking-wider uppercase">Our Menu</span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground">
             Explore Our <span className="text-gold-gradient">Flavours</span>
@@ -39,7 +46,7 @@ const FlavourShowcase = () => {
           <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm">
             From rich chocolate indulgence to fresh fruit delights — find your perfect cake.
           </p>
-        </div>
+        </motion.div>
 
         {/* Tabs */}
         <div className="flex justify-center gap-3 mb-8">
@@ -59,15 +66,29 @@ const FlavourShowcase = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
-          {activeFlavours.map((flavour, i) => (
-            <a
+        <motion.div
+          key={activeTab}
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.04 } },
+          }}
+        >
+          {activeFlavours.map((flavour) => (
+            <motion.a
               key={flavour}
               href={`${WHATSAPP_BASE}Hi, I want to order ${encodeURIComponent(flavour)} cake.`}
               target="_blank"
               rel="noopener noreferrer"
               className="card-luxury p-4 text-center group cursor-pointer"
-              style={{ animationDelay: `${i * 0.03}s` }}
+              variants={{
+                hidden: { opacity: 0, y: 20, scale: 0.95 },
+                visible: { opacity: 1, y: 0, scale: 1 },
+              }}
+              transition={{ duration: 0.35 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
               <div className="w-10 h-10 mx-auto mb-2 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                 <Cake className="w-4 h-4 text-accent" />
@@ -77,9 +98,9 @@ const FlavourShowcase = () => {
                 <ShoppingBag className="w-3 h-3" />
                 Order
               </span>
-            </a>
+            </motion.a>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
