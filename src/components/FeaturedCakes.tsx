@@ -15,8 +15,15 @@ const WHATSAPP_BASE = "https://wa.me/919762632539?text=";
 
 const FeaturedCakes = () => {
   return (
-    <section id="featured" className="section-padding">
-      <div className="max-w-6xl mx-auto">
+    <section id="featured" className="section-padding relative overflow-hidden">
+      {/* Background parallax glow */}
+      <motion.div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-accent/5 blur-3xl"
+        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           className="text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: 30 }}
@@ -38,21 +45,33 @@ const FeaturedCakes = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative rounded-xl overflow-hidden aspect-[4/3] card-luxury"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 40, rotateX: 5 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              whileHover={{ y: -6, transition: { duration: 0.25 } }}
+              transition={{ duration: 0.6, delay: i * 0.12 }}
+              whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
-              <img
+              <motion.img
                 src={cat.image}
                 alt={cat.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover"
                 loading="lazy"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.7 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              {/* Shimmer on hover */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-300" />
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                <p className="text-accent text-[10px] sm:text-xs font-medium mb-0.5">{cat.subtitle}</p>
+                <motion.p
+                  className="text-accent text-[10px] sm:text-xs font-medium mb-0.5"
+                  initial={{ x: -10, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 + i * 0.1 }}
+                >
+                  {cat.subtitle}
+                </motion.p>
                 <h3 className="font-heading text-base sm:text-xl md:text-2xl font-bold text-foreground">{cat.title}</h3>
               </div>
             </motion.a>
