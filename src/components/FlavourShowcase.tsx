@@ -16,16 +16,6 @@ const chocolateFlavours = [
   { name: "Kivan Crunchy", image: chocolateCakeImg },
   { name: "Truffle Chocolate", image: chocolateCakeImg },
   { name: "Belgium Chocolate", image: chocolateCakeImg },
-  { name: "Oreo Chocolate", image: chocolateCakeImg },
-  { name: "Ferrero Rocher Chocolate", image: chocolateCakeImg },
-  { name: "Hazelnut Chocolate", image: chocolateCakeImg },
-  { name: "Royal Chocolate", image: chocolateCakeImg },
-  { name: "Kit Kat", image: chocolateCakeImg },
-  { name: "Caramel Chocolate", image: chocolateCakeImg },
-  { name: "Almond Truffle", image: chocolateCakeImg },
-  { name: "Choco Blueberry", image: chocolateCakeImg },
-  { name: "Classic Chocolate", image: chocolateCakeImg },
-  { name: "Coffee Truffle", image: chocolateCakeImg },
 ];
 
 const fruitFlavours = [
@@ -33,22 +23,8 @@ const fruitFlavours = [
   { name: "Kiwi Cake", image: kiwiCakeImg },
   { name: "Choco Pineapple", image: fruitCakeImg },
   { name: "Tiramisu", image: fruitCakeImg },
-  { name: "Coffee", image: fruitCakeImg },
   { name: "Pineapple Cake", image: fruitCakeImg },
   { name: "Blueberry", image: fruitCakeImg },
-  { name: "Litchi Cake", image: fruitCakeImg },
-  { name: "Strawberry", image: fruitCakeImg },
-  { name: "Butter Scotch", image: fruitCakeImg },
-  { name: "Mango Kiwi", image: fruitCakeImg },
-  { name: "Mix Fruit", image: fruitCakeImg },
-  { name: "Rose Petal", image: fruitCakeImg },
-  { name: "Gulab Jamun", image: fruitCakeImg },
-  { name: "Rasmalai", image: fruitCakeImg },
-  { name: "Red Velvet", image: fruitCakeImg },
-  { name: "Vanilla Dry Fruit", image: fruitCakeImg },
-  { name: "White Forest", image: fruitCakeImg },
-  { name: "Black Currant", image: fruitCakeImg },
-  { name: "Green Apple", image: fruitCakeImg },
 ];
 
 const tabs = [
@@ -63,7 +39,7 @@ const FlavourShowcase = () => {
   const activeTabData = tabs.find((t) => t.id === activeTab)!;
 
   return (
-    <section id="flavours" className="section-padding bg-secondary">
+    <section id="flavours" className="section-padding bg-[#faf9f6]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -124,11 +100,11 @@ const FlavourShowcase = () => {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+              <div className="relative aspect-[4/3] overflow-hidden bg-white flex justify-center items-center py-4">
                 <img
                   src={flavour.image}
                   alt={flavour.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105 drop-shadow-sm"
                   loading="lazy"
                 />
               </div>
