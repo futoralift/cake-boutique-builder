@@ -3,25 +3,57 @@ import { ShoppingBag } from "lucide-react";
 import { motion } from "framer-motion";
 import chocolateCakeImg from "@/assets/chocolate-cake-flavour.png";
 import fruitCakeImg from "@/assets/fruit-cake-flavour.png";
+import zebraChocolateImg from "@/assets/zebra-chocolate.jpeg";
+import kiwiCakeImg from "@/assets/kiwi-cake.jpeg";
+import darkFantasyImg from "@/assets/dark-fantasy.jpeg";
+import blackForestImg from "@/assets/black-forest.jpeg";
+import mangoCakeImg from "@/assets/mango-cake.jpeg";
 
 const chocolateFlavours = [
-  "Kivan Crunchy", "Truffle Chocolate", "Belgium Chocolate", "Oreo Chocolate",
-  "Ferrero Rocher Chocolate", "Hazelnut Chocolate", "Royal Chocolate", "Kit Kat",
-  "Caramel Chocolate", "Almond Truffle", "Choco Blueberry", "Classic Chocolate",
-  "Zebra Chocolate", "Coffee Truffle",
+  { name: "Zebra Chocolate", image: zebraChocolateImg },
+  { name: "Dark Fantasy", image: darkFantasyImg },
+  { name: "Black Forest", image: blackForestImg },
+  { name: "Kivan Crunchy", image: chocolateCakeImg },
+  { name: "Truffle Chocolate", image: chocolateCakeImg },
+  { name: "Belgium Chocolate", image: chocolateCakeImg },
+  { name: "Oreo Chocolate", image: chocolateCakeImg },
+  { name: "Ferrero Rocher Chocolate", image: chocolateCakeImg },
+  { name: "Hazelnut Chocolate", image: chocolateCakeImg },
+  { name: "Royal Chocolate", image: chocolateCakeImg },
+  { name: "Kit Kat", image: chocolateCakeImg },
+  { name: "Caramel Chocolate", image: chocolateCakeImg },
+  { name: "Almond Truffle", image: chocolateCakeImg },
+  { name: "Choco Blueberry", image: chocolateCakeImg },
+  { name: "Classic Chocolate", image: chocolateCakeImg },
+  { name: "Coffee Truffle", image: chocolateCakeImg },
 ];
 
 const fruitFlavours = [
-  "Choco Pineapple", "Dark Fantasy", "Black Forest", "Tiramisu", "Coffee",
-  "Pineapple Cake", "Blueberry", "Mango Cake", "Kiwi Cake", "Litchi Cake",
-  "Strawberry", "Butter Scotch", "Mango Kiwi", "Mix Fruit", "Rose Petal",
-  "Gulab Jamun", "Rasmalai", "Red Velvet", "Vanilla Dry Fruit", "White Forest",
-  "Black Currant", "Green Apple",
+  { name: "Mango Cake", image: mangoCakeImg },
+  { name: "Kiwi Cake", image: kiwiCakeImg },
+  { name: "Choco Pineapple", image: fruitCakeImg },
+  { name: "Tiramisu", image: fruitCakeImg },
+  { name: "Coffee", image: fruitCakeImg },
+  { name: "Pineapple Cake", image: fruitCakeImg },
+  { name: "Blueberry", image: fruitCakeImg },
+  { name: "Litchi Cake", image: fruitCakeImg },
+  { name: "Strawberry", image: fruitCakeImg },
+  { name: "Butter Scotch", image: fruitCakeImg },
+  { name: "Mango Kiwi", image: fruitCakeImg },
+  { name: "Mix Fruit", image: fruitCakeImg },
+  { name: "Rose Petal", image: fruitCakeImg },
+  { name: "Gulab Jamun", image: fruitCakeImg },
+  { name: "Rasmalai", image: fruitCakeImg },
+  { name: "Red Velvet", image: fruitCakeImg },
+  { name: "Vanilla Dry Fruit", image: fruitCakeImg },
+  { name: "White Forest", image: fruitCakeImg },
+  { name: "Black Currant", image: fruitCakeImg },
+  { name: "Green Apple", image: fruitCakeImg },
 ];
 
 const tabs = [
-  { id: "chocolate", label: "🍫 Chocolate", flavours: chocolateFlavours, image: chocolateCakeImg },
-  { id: "fruit", label: "🍍 Fruit & Special", flavours: fruitFlavours, image: fruitCakeImg },
+  { id: "chocolate", label: "🍫 Chocolate", flavours: chocolateFlavours },
+  { id: "fruit", label: "🍍 Fruit & Special", flavours: fruitFlavours },
 ];
 
 const WHATSAPP_BASE = "https://wa.me/919762632539?text=";
@@ -56,11 +88,10 @@ const FlavourShowcase = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 ${
-                activeTab === tab.id
+              className={`px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 ${activeTab === tab.id
                   ? "bg-accent text-accent-foreground gold-glow"
                   : "bg-card border border-border text-muted-foreground hover:border-accent/30"
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -80,8 +111,8 @@ const FlavourShowcase = () => {
         >
           {activeTabData.flavours.map((flavour) => (
             <motion.a
-              key={flavour}
-              href={`${WHATSAPP_BASE}Hi, I want to order ${encodeURIComponent(flavour)} cake.`}
+              key={flavour.name}
+              href={`${WHATSAPP_BASE}Hi, I want to order ${encodeURIComponent(flavour.name)} cake.`}
               target="_blank"
               rel="noopener noreferrer"
               className="card-luxury overflow-hidden group cursor-pointer flex flex-col"
@@ -95,8 +126,8 @@ const FlavourShowcase = () => {
               {/* Image */}
               <div className="relative aspect-square overflow-hidden">
                 <img
-                  src={activeTabData.image}
-                  alt={flavour}
+                  src={flavour.image}
+                  alt={flavour.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
@@ -106,7 +137,7 @@ const FlavourShowcase = () => {
               {/* Info */}
               <div className="p-3 flex flex-col items-center text-center gap-2 flex-1">
                 <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight">
-                  {flavour}
+                  {flavour.name}
                 </h3>
                 <span className="mt-auto inline-flex items-center gap-1.5 bg-accent text-accent-foreground text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider hover:opacity-90 transition-opacity">
                   <ShoppingBag className="w-3 h-3" />
