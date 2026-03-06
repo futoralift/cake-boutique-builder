@@ -89,8 +89,8 @@ const FlavourShowcase = () => {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`px-5 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-300 ${activeTab === tab.id
-                  ? "bg-accent text-accent-foreground gold-glow"
-                  : "bg-card border border-border text-muted-foreground hover:border-accent/30"
+                ? "bg-accent text-accent-foreground gold-glow"
+                : "bg-card border border-border text-muted-foreground hover:border-accent/30"
                 }`}
             >
               {tab.label}
@@ -101,7 +101,7 @@ const FlavourShowcase = () => {
         {/* Grid */}
         <motion.div
           key={activeTab}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           initial="hidden"
           animate="visible"
           variants={{
@@ -115,7 +115,7 @@ const FlavourShowcase = () => {
               href={`${WHATSAPP_BASE}Hi, I want to order ${encodeURIComponent(flavour.name)} cake.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="card-luxury overflow-hidden group cursor-pointer flex flex-col"
+              className="bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer flex flex-col border border-border/50"
               variants={{
                 hidden: { opacity: 0, y: 20, scale: 0.95 },
                 visible: { opacity: 1, y: 0, scale: 1 },
@@ -124,25 +124,32 @@ const FlavourShowcase = () => {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
             >
               {/* Image */}
-              <div className="relative aspect-square overflow-hidden">
+              <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={flavour.image}
                   alt={flavour.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
               </div>
 
               {/* Info */}
-              <div className="p-3 flex flex-col items-center text-center gap-2 flex-1">
-                <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight">
-                  {flavour.name}
-                </h3>
-                <span className="mt-auto inline-flex items-center gap-1.5 bg-accent text-accent-foreground text-[10px] sm:text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider hover:opacity-90 transition-opacity">
-                  <ShoppingBag className="w-3 h-3" />
-                  Order Now
-                </span>
+              <div className="p-5 flex flex-col flex-1">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-heading font-semibold text-lg text-foreground pr-2">
+                    {flavour.name}
+                  </h3>
+                  <span className="text-accent font-bold mt-1">₹499</span>
+                </div>
+
+                <p className="text-muted-foreground text-sm mb-5 line-clamp-2">
+                  Premium {flavour.name.toLowerCase()} cake crafted with the finest ingredients and authentic flavours.
+                </p>
+
+                <div className="mt-auto w-full bg-[#cca64b] hover:bg-[#b5923f] text-white py-2.5 rounded-xl font-medium text-sm transition-colors flex justify-center items-center gap-2 shadow-sm">
+                  <ShoppingBag size={16} />
+                  <span>Order Now</span>
+                </div>
               </div>
             </motion.a>
           ))}
