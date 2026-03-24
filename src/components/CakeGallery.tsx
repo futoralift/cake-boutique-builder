@@ -1,20 +1,20 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
-import gallery5 from "@/assets/gallery-5.jpg";
-import gallery6 from "@/assets/gallery-6.jpg";
+import img1 from "@/assets/new_images/IMG20260308114828compresed.jpg";
+import img2 from "@/assets/new_images/IMG20260308115157compresed.jpg";
+import img3 from "@/assets/new_images/IMG20260308115242compresed.jpg";
+import img4 from "@/assets/new_images/IMG20260308115349compresed.jpg";
+import img5 from "@/assets/new_images/IMG20260308115422compresed.jpg";
+import img6 from "@/assets/new_images/IMG20260308115840compresed.jpg";
 
 const images = [
-  { src: gallery1, label: "Chocolate Gold Leaf" },
-  { src: gallery2, label: "Rose Floral Cake" },
-  { src: gallery3, label: "Rainbow Birthday" },
-  { src: gallery4, label: "Red Velvet Berry" },
-  { src: gallery5, label: "Butterscotch Caramel" },
-  { src: gallery6, label: "Mango Delight" },
+  { src: img1, label: "Silk Velvet" },
+  { src: img2, label: "Tonal Textures" },
+  { src: img3, label: "Pastel Bloom" },
+  { src: img4, label: "Royal Cocoa" },
+  { src: img5, label: "Golden Garnish" },
+  { src: img6, label: "Floral Whisper" },
 ];
 
 const CakeGallery = () => {
@@ -30,7 +30,7 @@ const CakeGallery = () => {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-accent text-xs font-medium tracking-wider uppercase">Our Creations</span>
+          <span className="text-secondary text-xs font-medium tracking-wider uppercase opacity-70">Our Creations</span>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground">
             Cake <span className="text-gold-gradient">Gallery</span>
           </h2>
@@ -39,12 +39,12 @@ const CakeGallery = () => {
           </p>
         </motion.div>
 
-        {/* Masonry-style grid */}
-        <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
+        {/* Masonry-style grid - Responsive */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-4xl mx-auto">
           {images.map((img, i) => (
             <motion.div
               key={img.label}
-              className="relative group cursor-pointer rounded-xl overflow-hidden aspect-square w-[calc(50%-6px)] md:w-[calc(33.333%-11px)] max-w-[220px]"
+              className="relative group cursor-pointer rounded-xl overflow-hidden aspect-square shadow-sm bg-white p-2"
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-40px" }}
@@ -55,7 +55,7 @@ const CakeGallery = () => {
               <img
                 src={img.src}
                 alt={img.label}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
